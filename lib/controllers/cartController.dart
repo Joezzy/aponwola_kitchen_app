@@ -34,7 +34,6 @@ class CartController extends GetxController{
   var placeObject=Place().obs;
   var selectedAddress=Address().obs;
 
-
   var selectedDate = DateFormat('yyyy-MM-dd').format(DateTime.now()).obs;
   var selectedTime = DateFormat('HH:mm:ss').format(DateTime.now()).obs;
   var pickedTimeFormat = "".obs;
@@ -136,6 +135,8 @@ class CartController extends GetxController{
       //
     }
   }
+
+
   addToCart(List<Product> cart){
     List  productList= cartList.where((i) => i==cart).toList();
     double subTotal=0.0;
@@ -144,7 +145,6 @@ class CartController extends GetxController{
     }
 
     cartModelList.add(CartModel(productList: cart, quantity:productList.length+1,total:subTotal, subTotal: subTotal));
-
     print("INT=${productList.length}");
     calculateTotal();
   }
@@ -155,9 +155,7 @@ class CartController extends GetxController{
      print(cartModelList[x]);
        totalFoodPrice.value=totalFoodPrice.value + cartModelList[x].subTotal!;
     }
-
     totalPriceWithDelivery.value=totalFoodPrice.value + selectedAddress.value!.amount!;
-
   }
 
   removeItem(CartModel cartItem){
@@ -175,7 +173,8 @@ class CartController extends GetxController{
       subTotal=cartItem.total! * qty;
       // subTotal=cartItem.subTotal! * qty;
       // cartModelList.remove(cartItem);
-      cartModelList[cartModelList.indexWhere((element) => element.productList == cartItem.productList)] = CartModel(productList: cartItem.productList, quantity:qty,total: cartItem.total, subTotal:subTotal);
+      cartModelList[cartModelList.indexWhere((element) => element.productList == cartItem.productList)]
+      = CartModel(productList: cartItem.productList, quantity:qty,total: cartItem.total, subTotal:subTotal);
       // cartModelList.add(CartModel(productList: cartItem.productList, quantity:qty,subTotal:subTotal));
     }
 

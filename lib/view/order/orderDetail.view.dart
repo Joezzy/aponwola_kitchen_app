@@ -42,7 +42,7 @@ class _OrderDetailViewState extends State<OrderDetailView> {
           iconTheme: const IconThemeData(color: Colors.black54),
           elevation: 0,
           centerTitle: true,
-          title: const Text("Orders detail",style: TextStyle(color: Colors.black),),
+          title: const Text("Order detail",style: TextStyle(color: Colors.black),),
         ),
         backgroundColor: AppTheme.whiteBackground,
         body: ListView(

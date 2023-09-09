@@ -4,6 +4,7 @@ import 'package:aponwola/common/app_theme.dart';
 import 'package:aponwola/controllers/cartController.dart';
 import 'package:aponwola/custom_widget/btn.dart';
 import 'package:aponwola/routes/app.routes.dart';
+import 'package:aponwola/util/openWhatsapp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -53,12 +54,7 @@ class _SuccessViewState extends State<SuccessView> {
 
             InkWell(
               onTap: ()async{
-                var whatsappUrl = "whatsapp://send?phone=2349083669369&text=Hi Aponwola";
-                try {
-                  launchUrl(Uri.parse(whatsappUrl));
-                } catch (e) {
-                  print(e);
-                }
+                openWhatsapp("Hi Aponwola, I just made an Order");
               },
 
               child: Container(

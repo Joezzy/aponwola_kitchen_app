@@ -9,6 +9,7 @@ import 'package:aponwola/custom_widget/mainProductCard.dart';
 import 'package:aponwola/data/product.dart';
 import 'package:aponwola/services/api.service.dart';
 import 'package:aponwola/view/cart/cart.view.dart';
+import 'package:aponwola/view/dashboad/dashboard.dart';
 import 'package:aponwola/view/profile/profile.view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -79,10 +80,19 @@ class _HomeAppBarState extends State<HomeAppBar> {
           ),
         ),
         actions: [
+
           IconButton(onPressed: (){
             showSearch(context: context,
             delegate: CustomSearchDelegate());
-          }, icon:const  Icon(Iconsax.search_normal))
+          },
+              icon:const  Icon(Iconsax.search_normal)),
+          IconButton(onPressed: (){
+            Navigator.of(context, rootNavigator: true).push(
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>const  CartView()),);
+          },
+              icon:const CartIconWidget()),
+          SizedBox(width: MySize.size10,)
         ],
         iconTheme: const IconThemeData(color: AppTheme.primaryColor),
         elevation: 0,
@@ -135,6 +145,7 @@ class CustomSearchDelegate extends SearchDelegate{
 
             quickAdd: () async {
               productController.quickAddToCart(product);
+
             });
     });
   }

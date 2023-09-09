@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Aponwola',
       theme: ThemeData(
         primarySwatch:Colors.red,
+        fontFamily: 'Montserrat',
       ),
       // home: const OpenContainerTransformDemo(),
       initialRoute: AppRoutes.SplashRoute,

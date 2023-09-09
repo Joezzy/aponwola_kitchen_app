@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:aponwola/common/app_theme.dart';
 import 'package:aponwola/common/constant.dart';
 import 'package:aponwola/common/myDialog.dart';
 import 'package:aponwola/controllers/cartController.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ProductController extends GetxController{
   final cartController=Get.put(CartController());
@@ -239,11 +241,25 @@ clearDetailPage(){
    totalPrice.value=0.0;
 }
 
+
 quickAddToCart(Product product){
   List <Product> cartProduct=[];
   cartProduct.add(product);
   cartController.addToCart(cartProduct);
+  Get.showSnackbar(
+    GetSnackBar(
+      // snackPosition:SnackPosition.TOP,
+      message: '${product.name} added to cart',
+      icon: const Icon(Iconsax.shopping_cart,color: Colors.white,),
+      duration: const Duration(seconds: 1),
+      backgroundColor: AppTheme.primaryColor,
+      borderRadius: 20,
+      margin: const EdgeInsets.all(20),
+    ),
+  );
 }
+
+
 addProductToCart(context){
 
 

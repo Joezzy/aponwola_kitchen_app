@@ -89,11 +89,11 @@ class _FoodDetailViewState extends State<FoodDetailView> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("${AppTheme.money(product.price!)}"),
-                            Text("${toBeginningOfSentenceCase(product.meal_type)}"),
+                            Text("${toBeginningOfSentenceCase(product.meal_type!.replaceAll("_", " "))}"),
                             // Text(" ${toBeginningOfSentenceCase(product.meal_type)}".toString()),
+
                           ],
                         ),
-
                       );
                     },
 

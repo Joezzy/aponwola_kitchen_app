@@ -4,6 +4,7 @@ import 'package:aponwola/data/category.dart';
 import 'package:aponwola/data/dropdownClass.dart';
 import 'package:aponwola/data/foodOptions.dart';
 import 'package:aponwola/data/product.dart';
+import 'package:aponwola/util/openWhatsapp.dart';
 import 'package:aponwola/view/home/detail.view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -100,11 +101,7 @@ class Category2Card extends StatelessWidget {
     return InkWell(
    onTap:()async{
      if(category.name=="Event bookings"){
-       const link =  WhatsAppUnilink(
-         phoneNumber: '+2349083669369',
-         text: "Hi Aponwola, I will like to make some inquiry.",
-       );
-       await launchUrl(link.asUri());
+       openWhatsapp("Hi Aponwola, I will like to make some inquiry");
      }else{
      Navigator.push(
      context,

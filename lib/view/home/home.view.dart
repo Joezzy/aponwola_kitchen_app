@@ -15,6 +15,7 @@ import 'package:aponwola/data/category.dart';
 import 'package:aponwola/data/dropdownClass.dart';
 import 'package:aponwola/data/foodOptions.dart';
 import 'package:aponwola/data/product.dart';
+import 'package:aponwola/util/openWhatsapp.dart';
 import 'package:aponwola/view/home/detail.view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -46,7 +47,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
   final authController=Get.put(AuthController());
 
   late PageController _pageController;
-  int currentPage = 1;
+  int currentPage = 0;
 
   @override
   void initState() {
@@ -114,13 +115,8 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                         style: TextStyle(fontSize: MySize.size25,
                             fontWeight: FontWeight.bold),),
                       FilledButton(onPressed: ()async{
+                        openWhatsapp("Hi, Aponwola");
 
-                        var whatsappUrl = "whatsapp://send?phone=2349083669369&text=Hi Aponwola";
-                        try {
-                          launchUrl(Uri.parse(whatsappUrl));
-                        } catch (e) {
-                          print(e);
-                        }
                       }, child: const Text("You have an event?"))
 
                     ],
@@ -162,12 +158,12 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                AspectRatio(
                  aspectRatio: 0.9,
                  child: PageView.builder(
-                     itemCount: categoryController.categoryList.length,
+                     itemCount: categoryController.categoryDailyList.length,
                      physics: const ClampingScrollPhysics(),
                      controller: _pageController,
                      itemBuilder: (context, index) {
-                       return  categoryController.categoryList[index].type=="daily"?
-                       carouselView(index,categoryController):Container();
+                       print(categoryController.categoryDailyList[index].name);
+                       return carouselView(index,categoryController);
                      }),
                ),
 
@@ -199,11 +195,10 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
           AnimatedContainerWrapper(
             transitionType: _transitionType,
             closedBuilder: (BuildContext _, VoidCallback openContainer) {
-              return CarouselCard(data: categoryController.categoryList[index],openContainer: openContainer,);
+              return CarouselCard(data: categoryController.categoryDailyList[index],openContainer: openContainer,);
             },
             // onClosed: false,
-            child:  DetailsView(data: categoryController.categoryList[index]),
-
+            child:  DetailsView(data: categoryController.categoryDailyList[index]),
           ),
 
           // carouselCard(categoryController.categoryList[index]),

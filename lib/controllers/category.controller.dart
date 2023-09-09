@@ -27,10 +27,17 @@ class CategoryController extends GetxController{
     orderBy('name', descending: true).get();
     categoryList.value= cat.docs.map((doc) => Category.fromSnapShot(doc)).toList();
     categoryNormalList.value = categoryList.where((i) => i.type == "normal").toList();
-    categoryDailyList.value = categoryList.where((i) => i.type == "daily").toList();
-    print("FISRT_ ${categoryNormalList.first.name}");
-    isLoadingCategory.value=false;
+    categoryDailyList.value = categoryList.where((i) => i.type == "daily").toList()
+      ..sort((a, b) => a.cat_id!.compareTo(b!.cat_id!));
+    // categoryDailyList.sort((a, b) => a.index!.compareTo(b!.index!));
 
+    print("DAILY__ ${categoryDailyList[0].name} ");
+    print("DAILY__ ${categoryDailyList[1].name} ");
+    print("DAILY__ ${categoryDailyList[2].name} ");
+    print("DAILY__ ${categoryDailyList[3].name} ");
+    print("DAILY__ ${categoryDailyList[4].name} ");
+
+    isLoadingCategory.value=false;
   }catch(e){
     print(e);
     isLoadingCategory.value=false;

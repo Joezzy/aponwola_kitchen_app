@@ -47,7 +47,7 @@ class _DashboardScreenState extends State<DashboardScreen>
   void initState() {
     // TODO: implement initState
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
 
     onItemClicked(0) ;
   }
@@ -70,7 +70,7 @@ class _DashboardScreenState extends State<DashboardScreen>
       screens: [
 
         HomeView(),
-        const CartView(),
+        // const CartView(),
         OrderView(),
         //
       ],
@@ -111,72 +111,6 @@ class _DashboardScreenState extends State<DashboardScreen>
       navBarStyle: NavBarStyle.style6, // Choose the nav bar style with this property.
     );
 
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   theme: ThemeData(
-    //     backgroundColor: AppTheme.o3Background,
-    //     fontFamily: 'ClashDisplay',
-    //   ),
-    //   home: DefaultTabController(
-    //     length: 3,
-    //     // set initial index to 1
-    //     initialIndex: 0,
-    //     child: Scaffold(
-    //       backgroundColor: AppTheme.whiteBackground,
-    //       // appBar:(selectedIndex!=3)? BrentAppBar(title: pageTitle,):null,
-    //       body: TabBarView(
-    //
-    //         physics: const NeverScrollableScrollPhysics(),
-    //         controller: tabController,
-    //         children: <Widget>[
-    //
-    //           HomeScreen(),
-    //           MyTokenScreen(),
-    //           CommunityScreen(),
-    //           SettingsScreen()
-    //
-    //           //
-    //         ],
-    //
-    //       ),
-    //
-    //
-    //       bottomNavigationBar: BottomNavigationBar(
-    //
-    //         items: <BottomNavigationBarItem>[
-    //           BottomNavigationBarItem(
-    //               activeIcon:  Icon(Iconsax.home_trend_up5),
-    //               icon: Icon(Iconsax.home_trend_up),
-    //               label:"Home"
-    //           ),
-    //
-    //           BottomNavigationBarItem(
-    //               activeIcon:Icon(Iconsax.money_25),
-    //               icon: Icon(Iconsax.money_2),
-    //               label: "Players"),
-    //           BottomNavigationBarItem(
-    //               activeIcon:Icon(Iconsax.profile_2user5),
-    //               icon: Icon(Iconsax.profile_2user),
-    //               label: "Community"),
-    //           BottomNavigationBarItem(
-    //               activeIcon:Image.asset("assets/setting-2.png"),//g_25
-    //               // activeIcon:Icon(Iconsax.setting_25),//g_25
-    //               icon: Icon(Iconsax.setting_2),
-    //               label: "Settings"),
-    //
-    //         ],
-    //         currentIndex: selectedIndex,
-    //         unselectedItemColor: Colors.grey,
-    //         selectedItemColor: AppTheme.o3Blue,
-    //         //showSelectedLabels: true,
-    //         showUnselectedLabels: true,
-    //         type: BottomNavigationBarType.shifting,
-    //         selectedLabelStyle: TextStyle(fontSize:12),
-    //         onTap: onItemClicked,
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
@@ -187,48 +121,11 @@ class _DashboardScreenState extends State<DashboardScreen>
         activeColorPrimary: AppTheme.primaryColor,
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
-      PersistentBottomNavBarItem(
-        icon: Stack(
-          children: [
-            Container(
-
-              padding: EdgeInsets.symmetric(
-                  horizontal: MySize.size10
-              ),
-              // width: MySize.size50,
-              // height: MySize.size30,
-              decoration: BoxDecoration(
-                // color: AppTheme.o3Grey,
-                  borderRadius: BorderRadius.circular(6)
-              ),
-              child: const Icon(Iconsax.shopping_cart,size: 30,),
-            ),
-
-            Positioned(
-                top: 0,
-                right: 5,
-                child: Container(
-                  height: 15,
-                    width: 15,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(6)
-                    ),
-                    padding: EdgeInsets.symmetric(
-                        horizontal: MySize.size2
-                    ),
-                    child: GetX<CartController>(
-                        builder: (cartController) {
-                          return Center(child: Text("${cartController.cartModelList.length}",style:const TextStyle(fontSize: 11),));
-                        }
-                    )
-                )
-            ),
-          ],
-        ),
-        activeColorPrimary: AppTheme.primaryColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
-      ),
+      // PersistentBottomNavBarItem(
+      //   icon: const CartIconWidget(),
+      //   activeColorPrimary: AppTheme.primaryColor,
+      //   inactiveColorPrimary: CupertinoColors.systemGrey,
+      // ),
 
       PersistentBottomNavBarItem(
         icon: Icon(selectedIndex==1?Iconsax.shopping_bag:Iconsax.shopping_bag),
@@ -237,16 +134,59 @@ class _DashboardScreenState extends State<DashboardScreen>
         inactiveColorPrimary: CupertinoColors.systemGrey,
       ),
 
-      // PersistentBottomNavBarItem(
-      //   icon: const Icon(Iconsax.user),
-      //   // title: ("Cart"),
-      //   activeColorPrimary: AppTheme.primaryColor,
-      //   inactiveColorPrimary: CupertinoColors.systemGrey,
-      // ),
 
     ];
   }
 
+}
+
+class CartIconWidget extends StatelessWidget {
+  const CartIconWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+
+        Container(
+
+          padding: EdgeInsets.symmetric(
+              horizontal: MySize.size10
+          ),
+          // width: MySize.size50,
+          // height: MySize.size30,
+          decoration: BoxDecoration(
+            // color: AppTheme.o3Grey,
+              borderRadius: BorderRadius.circular(6)
+          ),
+          child: const Icon(Iconsax.shopping_cart,size: 30,),
+        ),
+
+        Positioned(
+            top: 0,
+            right: 5,
+            child: Container(
+              height: 15,
+                width: 15,
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(6)
+                ),
+                padding: EdgeInsets.symmetric(
+                    horizontal: MySize.size2
+                ),
+                child: GetX<CartController>(
+                    builder: (cartController) {
+                      return Center(child: Text("${cartController.cartModelList.length}",style:const TextStyle(fontSize: 11),));
+                    }
+                )
+            )
+        ),
+      ],
+    );
+  }
 }
 
 

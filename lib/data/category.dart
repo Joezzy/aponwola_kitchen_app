@@ -16,6 +16,7 @@ class Category {
   String? description;
   String? image;
   String? type;
+  String? cat_id;
 
   Category({
     this.id,
@@ -23,13 +24,16 @@ class Category {
     this.image,
     this.description,
     this.type,
+    this.cat_id,
   });
 
   toJson(){
     return { "name": name,
       "description":description,
       "type":type,
-      "image":image};
+      "cat_id":cat_id,
+      "image":image
+    };
   }
   factory Category.fromSnapShot(QueryDocumentSnapshot<Object?> documentSnapshot) {
     Map<String, dynamic> data = documentSnapshot.data() as Map<String, dynamic>;
@@ -39,6 +43,7 @@ class Category {
       description: data["description"],
       image: data["image"],
       type: data["type"],
+      cat_id: data["cat_id"]
     );
   }
 
