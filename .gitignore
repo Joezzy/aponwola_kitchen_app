@@ -4,7 +4,7 @@
 *.pyc
 *.swp
 .DS_Store
-.jks
+*.jks
 .atom/
 .buildlog/
 .history
