@@ -161,11 +161,10 @@ class _DetailsViewState extends State<DetailsView> with SingleTickerProviderStat
                               });
                             });
 
-
                       }),
 
                 if(productController.productListDailySide.isNotEmpty)
-                  const Header(text:"Side (Optional"),
+                  const Header(text:"Side (Optional)"),
                 if(productController.productListDailySide.isNotEmpty)
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
@@ -192,32 +191,6 @@ class _DetailsViewState extends State<DetailsView> with SingleTickerProviderStat
 
                       }),
 
-                // if(productController.productListBowl.isNotEmpty)
-                // ListView.builder(
-                //     physics: const NeverScrollableScrollPhysics(),
-                //     shrinkWrap: true,
-                //     itemCount: productController.productListBowl.length,
-                //     itemBuilder: (context, index) {
-                //       Product product= productController.productListBowl[index];
-                //
-                //       return  OtherProductCard(
-                //         cardColor: Colors.grey.withOpacity(.2),
-                //           radioValue: product.id!,
-                //           selected: productController.selectedBowlProduct.contains(product.id),
-                //           title: "${product.name}",
-                //           subtitle: "${product.price}",
-                //           image:product.image,
-                //           icon: const Icon(
-                //             MdiIcons.wallet,
-                //           ),
-                //           onTap: () async {
-                //             setState(() {
-                //               productController.selectBowlMethod(product);
-                //             });
-                //           });
-                //
-                //
-                //     }),
 
 
               ],

@@ -10,6 +10,7 @@ import 'package:aponwola/util/authHandler.dart';
 import 'package:aponwola/view/auth/login.view.dart';
 import 'package:aponwola/view/dashboad/dashboard.dart';
 import 'package:aponwola/view/home/home.view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -37,19 +38,29 @@ class AuthController extends GetxController{
          password: passwordController.value.text
      );
 
-     isLogin.value=true;
      if(atStart){
        Navigator.pushReplacement(
            context,
            MaterialPageRoute(builder: (_) => DashboardScreen()));
      }else{
-       ApiService.me = await ApiService.getSelfInfo();
-       Navigator.pop(context);
+      final userInfo = await ApiService.getSelfInfo();
+      if(userInfo!=null){
+        isLogin.value=true;
+        ApiService.me=userInfo;
+        Navigator.pop(context);
+      }
+      else{
+        Dialogs.alertBox(context, "Unsuccessful", "This account is not available", DialogType.error);
+      }
+
      }
+     // isLogin.value=false;
 
      isLoading.value=false;
    }  on FirebaseAuthException catch (e) {
      isLoading.value=false;
+     isLogin.value=false;
+
      String message=   AuthExceptionHandler.handleAuthException(e);
      Dialogs.alertBox(context, "Unsuccessful", message, DialogType.error);
    }
@@ -185,16 +196,22 @@ class AuthController extends GetxController{
          print('User is signed in!');
          print(user);
          print("isStart: $isStart");
-         ApiService.me = await ApiService.getSelfInfo();
-         print("USER_DETAIl");
-         print(ApiService.me.email);
-         print(ApiService.me.name);
-         print(ApiService.me.id);
-         isLogin.value=true;
-           Navigator.of(context).pushAndRemoveUntil(
-               MaterialPageRoute(
-                   builder: (BuildContext context) =>  DashboardScreen()),
-                   (Route<dynamic> route) => false);
+         final userInfo = await ApiService.getSelfInfo();
+         print("userInfo= $userInfo");
+         if(userInfo!=null) {
+           ApiService.me = userInfo;
+           print("USER_DETAIl");
+           print(ApiService.me.email);
+           print(ApiService.me.name);
+           print(ApiService.me.id);
+           isLogin.value = true;
+
+         }
+         Navigator.of(context, rootNavigator: true).pushAndRemoveUntil(
+             MaterialPageRoute(
+                 builder: (BuildContext context) => const LoginView()),
+                 (Route<dynamic> route) => false);
+
 
        }else{
          if(isStart) {
@@ -210,6 +227,7 @@ class AuthController extends GetxController{
          }
        }
      });
+
      isLoading.value=false;
    }on FirebaseAuthException catch (e) {
      isLoading.value=false;
@@ -244,4 +262,62 @@ class AuthController extends GetxController{
 
    isLoading.value=false;
  }
-}
+
+
+  deleteAccount2(context)async {
+    isLoading.value=true;
+    try {
+      await ApiService.updateUserInfo(
+        nameController.value.text,
+        phoneController.value.text,
+      ).then((value)async {
+        ApiService.me = await ApiService.getSelfInfo();
+        loadProfile();
+        Dialogs.alertBox(
+            context, "Successful", "Profile updated",
+            DialogType.success);
+      });
+      isLoading.value=false;
+      print("SUCCESS_REG");
+    } on FirebaseAuthException catch (e) {
+      isLoading.value=false;
+      String message=   AuthExceptionHandler.handleAuthException(e);
+      Dialogs.alertBox(
+          context, "Unsuccessful", message,
+          DialogType.error);
+    } catch (e) {
+      isLoading.value=false;
+      Dialogs.alertBox(context, "Unsuccessful", e.toString(), DialogType.error);
+    }
+  }
+
+
+  Future deleteAccount(context)async {
+    isLogin.value=true;
+
+    ApiService.me = await ApiService.getSelfInfo();
+
+    print(ApiService.me!.id!);
+
+    try{
+      return FirebaseFirestore.instance.collection('users')
+          .doc(ApiService.me!.id!)
+          .delete()
+          .then((value) async{
+        print("Account Deleted");
+        await  auth.signOut();
+        isLogin.value=false;
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+                builder: (BuildContext context) =>  DashboardScreen()),
+                (Route<dynamic> route) => false);
+        Dialogs.alertBox(context, "Aponwola", "Account Deleted", DialogType.success);
+          })
+          .catchError((error) => print("Failed to delete category: $error"));
+
+          }catch(e){
+            print(e);
+          }
+    }
+
+ }

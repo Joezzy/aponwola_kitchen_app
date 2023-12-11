@@ -156,19 +156,19 @@ class _CartViewState extends State<CartView> with SingleTickerProviderStateMixin
                                                 children: [
                                                  Row(
                                                    children: [
-                                                     ClipRRect(
-                                                       borderRadius:  BorderRadius.circular(10),
-                                                       child: CachedNetworkImage(
-                                                         imageUrl:  product.image!,
-                                                         height: MySize.size30,
-                                                         width: MySize.size30,
-                                                         fit: BoxFit.cover,
-                                                       ),
-                                                     ),
+                                                     // ClipRRect(
+                                                     //   borderRadius:  BorderRadius.circular(10),
+                                                     //   child: CachedNetworkImage(
+                                                     //     imageUrl:  product.image!,
+                                                     //     height: MySize.size30,
+                                                     //     width: MySize.size30,
+                                                     //     fit: BoxFit.cover,
+                                                     //   ),
+                                                     // ),
                                                      Container(
                                                          width: MySize.size200,
                                                          padding: EdgeInsets.symmetric(horizontal: MySize.size10),
-                                                         child: Text("${product.name}",
+                                                         child: Text("* ${product.name}\n",
                                                            style: TextStyle(fontWeight: FontWeight.w400,fontSize: MySize.size12),)),
                                                    ],
                                                  ),

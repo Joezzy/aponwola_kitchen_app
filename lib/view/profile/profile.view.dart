@@ -76,16 +76,24 @@ class _ProfileViewState extends State<ProfileView> {
       ),
 
       body:
-    // GetX<AuthController>(
-    //       builder: (authController) {
-    //         return
     Container(
                 child: authController.isLogin.value?
                 regFormWidget(context,authController):
                    const  LoginView(atStart:false),
-              )
-      //     }
-      // ),
+              ),
+
+        bottomNavigationBar:  Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 80.0),
+          child: MyButton(
+            height: MySize.size30,
+          width: MySize.size200,
+          text: "Delete Account",
+          onPressed: (){
+              authController.deleteAccount(context);
+
+          }),
+        ),
+
     );
   }
 

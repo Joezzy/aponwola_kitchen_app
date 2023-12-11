@@ -164,7 +164,7 @@ class _DetailsViewState extends State<DetailsView> with SingleTickerProviderStat
                       }),
 
                 if(productController.productListDailySide.isNotEmpty)
-                  const Header(text:"Side (Optional"),
+                  const Header(text:"Side (Optional)"),
                 if(productController.productListDailySide.isNotEmpty)
                   ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),

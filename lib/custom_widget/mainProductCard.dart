@@ -140,7 +140,7 @@ class OtherProductCard extends StatelessWidget {
         this.title = "",
         this.subtitle = "",
         this.horizontalMargin = 5,
-        this.verticalMargin = 10,
+        this.verticalMargin = 1,
         this.horizontalPadding = 20,
         this.verticalPadding = 30,
         required this.icon,
@@ -167,34 +167,64 @@ class OtherProductCard extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(MySize.size8)),
-        child: ListTile(
+        child:
+        GestureDetector(
           onTap: onTap,
-          contentPadding: EdgeInsets.zero,
-          leading:  ClipRRect(
-            borderRadius:  BorderRadius.circular(10),
-            child: CachedNetworkImage(
-              imageUrl: image!,
-              height: MySize.size100,
-              width: MySize.size70,
-              fit: BoxFit.cover,
-            ),
-          ),
-          trailing:   Icon(
-    selected?
-    MdiIcons.checkboxMarked:
-    MdiIcons.checkboxBlankOutline
-          ),
-          title: Text(
-            title,
-            style: TextStyle(
-                fontSize: MySize.size14,fontWeight: FontWeight.w500),
-          ),
-          subtitle: Text(
-            subtitle,
-            style: TextStyle(
-                fontSize: MySize.size14),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+               Text(
+                    title,
+                    style: TextStyle(
+                        fontSize: MySize.size14,fontWeight: FontWeight.w500),
+                  ),
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                        fontSize: MySize.size14),
+                  ),
+                ],
+              ),
+              Icon(
+                  selected?
+                  MdiIcons.checkboxMarked:
+                  MdiIcons.checkboxBlankOutline
+              ),
+            ],
           ),
         )
+
+    //     ListTile(
+    //       onTap: onTap,
+    //       contentPadding: EdgeInsets.zero,
+    //       // leading:  ClipRRect(
+    //       //   borderRadius:  BorderRadius.circular(10),
+    //       //   child: CachedNetworkImage(
+    //       //     imageUrl: image!,
+    //       //     height: MySize.size100,
+    //       //     width: MySize.size70,
+    //       //     fit: BoxFit.cover,
+    //       //   ),
+    //       // ),
+    //       trailing:   Icon(
+    // selected?
+    // MdiIcons.checkboxMarked:
+    // MdiIcons.checkboxBlankOutline
+    //       ),
+    //       title: Text(
+    //         title,
+    //         style: TextStyle(
+    //             fontSize: MySize.size14,fontWeight: FontWeight.w500),
+    //       ),
+    //       subtitle: Text(
+    //         subtitle,
+    //         style: TextStyle(
+    //             fontSize: MySize.size14),
+    //       ),
+    //     )
     );
   }
 }
