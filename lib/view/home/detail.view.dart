@@ -86,7 +86,8 @@ class _DetailsViewState extends State<DetailsView> with SingleTickerProviderStat
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Hero(
-                    tag: widget.data!.image!,
+                    tag: widget.data!.name!,
+                    transitionOnUserGestures: true,
                     child:ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: CachedNetworkImage(

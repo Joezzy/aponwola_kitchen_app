@@ -179,7 +179,7 @@ class CartIconWidget extends StatelessWidget {
                 ),
                 child: GetX<CartController>(
                     builder: (cartController) {
-                      return Center(child: Text("${cartController.cartModelList.length}",style:const TextStyle(fontSize: 11),));
+                      return Center(child: Text("${cartController.cartModelList.length}",style:const TextStyle(fontSize: 11,color: Colors.white),));
                     }
                 )
             )

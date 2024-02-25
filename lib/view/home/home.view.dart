@@ -112,18 +112,19 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                       Text("Finger licking \ndelicacies",
                         // textAlign: TextAlign.right,
                         textWidthBasis: TextWidthBasis.longestLine,
-                        style: TextStyle(fontSize: MySize.size25,
+                        style: TextStyle(fontSize: MySize.size22,
                             fontWeight: FontWeight.bold),),
-                      FilledButton(onPressed: ()async{
+                      FilledButton(
+                          onPressed: ()async{
                         openWhatsapp("Hi, Aponwola");
 
-                      }, child: const Text("You have an event?"))
+                      }, child: const Text("Have an event?"))
 
                     ],
                   ),
 
                 ),
-                const Header(text:"Category"),
+                const Header(text:"Categories"),
                 Container(
                   child: SizedBox(
                     height: MySize.size100,
@@ -155,6 +156,7 @@ class _HomeViewState extends State<HomeView> with SingleTickerProviderStateMixin
                     ),
                   ),
                 ),
+
                AspectRatio(
                  aspectRatio: 0.9,
                  child: PageView.builder(

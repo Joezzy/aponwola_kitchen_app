@@ -59,15 +59,15 @@ class MainProductCard extends StatelessWidget {
         child: ListTile(
           onTap: onTap,
           contentPadding: EdgeInsets.zero,
-          leading:  ClipRRect(
-            borderRadius:  BorderRadius.circular(10),
-            child: CachedNetworkImage(
-              imageUrl: image!,
-              height: MySize.size100,
-              width: MySize.size70,
-              fit: BoxFit.cover,
-            ),
-          ),
+          // leading:  ClipRRect(
+          //   borderRadius:  BorderRadius.circular(10),
+          //   child: CachedNetworkImage(
+          //     imageUrl: image!,
+          //     height: MySize.size100,
+          //     width: MySize.size70,
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
           trailing:
           isAdd?
         FilledButton(onPressed: quickAdd, child: const Text("Add +")) :
@@ -176,11 +176,14 @@ class OtherProductCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-               Text(
-                    title,
-                    style: TextStyle(
-                        fontSize: MySize.size14,fontWeight: FontWeight.w500),
-                  ),
+               SizedBox(
+                 width: MySize.size300,
+                 child: Text(
+                      title,
+                      style: TextStyle(
+                          fontSize: MySize.size14,fontWeight: FontWeight.w500),
+                    ),
+               ),
                   Text(
                     subtitle,
                     style: TextStyle(

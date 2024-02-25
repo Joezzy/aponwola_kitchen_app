@@ -82,7 +82,7 @@ class _ProfileViewState extends State<ProfileView> {
                    const  LoginView(atStart:false),
               ),
 
-        bottomNavigationBar:  Padding(
+        bottomNavigationBar: authController.isLogin.value? Padding(
           padding: const EdgeInsets.symmetric(horizontal: 80.0),
           child: MyButton(
             height: MySize.size30,
@@ -92,7 +92,7 @@ class _ProfileViewState extends State<ProfileView> {
               authController.deleteAccount(context);
 
           }),
-        ),
+        ):null,
 
     );
   }

@@ -129,11 +129,15 @@ class Category2Card extends StatelessWidget {
                     ClipRRect(
                       borderRadius:  BorderRadius.circular(10),
                       child:
-                      CachedNetworkImage(
-                        imageUrl: category.image!,
-                        fit: BoxFit.cover,
-                        width: MySize.size70,
-                        height: MySize.size70,
+                      Hero(
+                        tag: category.name! ,
+                        transitionOnUserGestures: true,
+                        child: CachedNetworkImage(
+                          imageUrl: category.image!,
+                          fit: BoxFit.cover,
+                          width: MySize.size70,
+                          height: MySize.size70,
+                        ),
                       )
                     ),
 
@@ -192,6 +196,7 @@ class CarouselCard extends StatelessWidget {
         ),
         child: Hero(
           tag: data.name!,
+          transitionOnUserGestures: true,
           child: GestureDetector(
             onTap: () {
 
