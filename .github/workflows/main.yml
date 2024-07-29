@@ -56,6 +56,10 @@ jobs:
           keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
       - name: Checkout
         uses: actions/checkout@v3
+      - uses: actions/upload-artifact@v2
+        with:
+          name: android-release
+          path: build/app/outputs/bundle/release/app-release.aab
       #      - uses: actions/setup-java@v1
       #        with:
       #          java-version: "12.x"
