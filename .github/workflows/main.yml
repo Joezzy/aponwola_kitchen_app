@@ -59,12 +59,12 @@ jobs:
       #      - uses: actions/setup-java@v1
       #        with:
       #          java-version: "12.x"
-      - uses: actions/upload-artifact@v3
-        with:
-          name: release-artifacts
-          paths: |
-            app/build/outputs/apk/release/
-            app/build/outputs/bundle/release/
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          name: release-artifacts
+#          paths: |
+#            app/build/outputs/apk/release/
+#            app/build/outputs/bundle/release/
 
       - uses: subosito/flutter-action@v2
         with:
