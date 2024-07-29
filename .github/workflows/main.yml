@@ -23,21 +23,40 @@ jobs:
 #      - run: flutter analyze
 #      - run: flutter test
 
-#  build_ios:
-#    name: Build Flutter (iOS)
-#    needs: [flutter_test]
-#    runs-on: macos-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-java@v1
-#        with:
-#          java-version: "12.x"
-#      - uses: subosito/flutter-action@v1
-#        with:
-#          channel: "stable"
-#      - run: flutter pub get
-#      - run: flutter clean
-#      - run: flutter build ios --release --no-codesign
+  build_ios:
+    name: Build Flutter (iOS)
+    needs: [flutter_test]
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
+      - run: flutter pub get
+      - run: flutter clean
+      - run: flutter build ios --release --no-codesign
+      - run: |
+          cd ios
+          rm podfile. lock 
+          pod deintegrate 
+          pod repo update 
+          pod install
+      - run: |
+        flutter build ios --no-codesign 
+        cd build/ios/iphoneos 
+        mkdir Payload 
+        cd Payload
+        ln -s .. /Runner. app cd ..
+        zip -r app. ipa Payload
+      - name: Push to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/ios/iphoneos/app.ipa"
+          tag: ios.1.0.${{github. run_number}}
+          token: ${{secrets. TOKEN}}
 
   build_appbundle:
     name: Build Flutter (Android)
@@ -64,3 +83,5 @@ jobs:
           artifacts: "build/app/outputs/apk/release/*"
           tag: v0.0.2
           token: ${{ secrets.TOKEN }}
+
+
