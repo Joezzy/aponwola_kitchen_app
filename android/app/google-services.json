@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "487453644062",
+    "project_id": "general-app-5c35a",
+    "storage_bucket": "general-app-5c35a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487453644062:android:748d3a2463374d9efae50f",
+        "android_client_info": {
+          "package_name": "com.aponwola.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487453644062-giqld9lknhtaodda6mbqhspl19297b6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVQ6jqeM8t6Oo_ajMZmEob0CyEqkx4rZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487453644062-giqld9lknhtaodda6mbqhspl19297b6a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "487453644062-hp9tgv0pvt4hmb5pg0nriihduf9bpss8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.todoCleanArchitecture"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:487453644062:android:2774f898c36b778efae50f",
+        "android_client_info": {
+          "package_name": "com.example.todo_clean_architecture"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "487453644062-giqld9lknhtaodda6mbqhspl19297b6a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVQ6jqeM8t6Oo_ajMZmEob0CyEqkx4rZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "487453644062-giqld9lknhtaodda6mbqhspl19297b6a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "487453644062-hp9tgv0pvt4hmb5pg0nriihduf9bpss8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.todoCleanArchitecture"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

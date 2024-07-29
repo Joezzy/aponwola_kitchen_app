@@ -33,10 +33,12 @@ class AuthController extends GetxController{
   login(context, atStart)async{
    isLoading.value=true;
    try {
+
      UserCredential userCredential = await auth.signInWithEmailAndPassword(
          email: emailController.value.text,
          password: passwordController.value.text
      );
+
 
      if(atStart){
        Navigator.pushReplacement(

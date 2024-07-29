@@ -44,40 +44,37 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCKqqqhdlziYYP_gBHWto7CJQywiFo3zqk',
-    appId: '1:257488191952:web:ac4f02b52c4b5deddc39d5',
-    messagingSenderId: '257488191952',
-    projectId: 'aponwola-79e01',
-    authDomain: 'aponwola-79e01.firebaseapp.com',
-    storageBucket: 'aponwola-79e01.appspot.com',
-    measurementId: 'G-GX9R15M01E',
+    apiKey: 'AIzaSyDqf5XAyMmVW5DVK_Cs9B3tTDz7nme48-Q',
+    appId: '1:487453644062:web:dc6b68356c2a9751fae50f',
+    messagingSenderId: '487453644062',
+    projectId: 'general-app-5c35a',
+    authDomain: 'general-app-5c35a.firebaseapp.com',
+    storageBucket: 'general-app-5c35a.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCrtIMzmqmCUvtj14yXLu-l2XvxWF4I5mE',
-    appId: '1:257488191952:android:8459fb75dff3a979dc39d5',
-    messagingSenderId: '257488191952',
-    projectId: 'aponwola-79e01',
-    storageBucket: 'aponwola-79e01.appspot.com',
+    apiKey: 'AIzaSyCVQ6jqeM8t6Oo_ajMZmEob0CyEqkx4rZY',
+    appId: '1:487453644062:android:748d3a2463374d9efae50f',
+    messagingSenderId: '487453644062',
+    projectId: 'general-app-5c35a',
+    storageBucket: 'general-app-5c35a.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDPs_GyYargfwEvvyldDNtRbEWLsUX7mho',
-    appId: '1:257488191952:ios:d8baab632371741bdc39d5',
-    messagingSenderId: '257488191952',
-    projectId: 'aponwola-79e01',
-    storageBucket: 'aponwola-79e01.appspot.com',
-    iosClientId: '257488191952-8d09gjomij9al9spvch3kji88gsohkep.apps.googleusercontent.com',
-    iosBundleId: 'com.aponwola.admin',
+    apiKey: 'AIzaSyB9u34ixidxjDSiQeBsW5JI373D47pGRHk',
+    appId: '1:487453644062:ios:4b528b3ac3ee1f4efae50f',
+    messagingSenderId: '487453644062',
+    projectId: 'general-app-5c35a',
+    storageBucket: 'general-app-5c35a.appspot.com',
+    iosBundleId: 'com.aponwola.app',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDPs_GyYargfwEvvyldDNtRbEWLsUX7mho',
-    appId: '1:257488191952:ios:d8baab632371741bdc39d5',
-    messagingSenderId: '257488191952',
-    projectId: 'aponwola-79e01',
-    storageBucket: 'aponwola-79e01.appspot.com',
-    iosClientId: '257488191952-8d09gjomij9al9spvch3kji88gsohkep.apps.googleusercontent.com',
-    iosBundleId: 'com.aponwola.admin',
+    apiKey: 'AIzaSyB9u34ixidxjDSiQeBsW5JI373D47pGRHk',
+    appId: '1:487453644062:ios:4b528b3ac3ee1f4efae50f',
+    messagingSenderId: '487453644062',
+    projectId: 'general-app-5c35a',
+    storageBucket: 'general-app-5c35a.appspot.com',
+    iosBundleId: 'com.aponwola.app',
   );
 }
