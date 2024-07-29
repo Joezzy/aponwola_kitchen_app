@@ -44,32 +44,11 @@ jobs:
     needs: [flutter_test]
     runs-on: ubuntu-latest
     steps:
-      - name: Sign App Bundle
-        uses: r0adkll/sign-android-release@v1
-        id: sign_app
-        with:
-#          releaseDirectory: bundles/
-#          releaseDirectory: build/app/outputs/bundle/release/
-          signingKeyBase64: ${{ secrets.SIGNING_KEY_STORE_BASE64 }}
-          alias: ${{ secrets.SIGNING_KEY_ALIAS }}
-          keyStorePassword: ${{ secrets.SIGNING_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: actions/upload-artifact@v2
-        with:
-          name: android-release
-          path: build/app/outputs/bundle/release/app-release.aab
       #      - uses: actions/setup-java@v1
       #        with:
       #          java-version: "12.x"
-#      - uses: actions/upload-artifact@v3
-#        with:
-#          name: release-artifacts
-#          paths: |
-#            app/build/outputs/apk/release/
-#            app/build/outputs/bundle/release/
-
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.16.5"
@@ -77,5 +56,5 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       - run: flutter clean
-#      - run: flutter build apk  --debug --split-per-abi
-      - run: flutter build appbundle
+      - run: flutter build apk --split-per-abi
+#      - run: flutter build appbundle
