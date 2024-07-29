@@ -56,4 +56,5 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       - run: flutter clean
-      - run: flutter build appbundle
+      - run: flutter build apk --split-per-abi
+#      - run: flutter build appbundle
