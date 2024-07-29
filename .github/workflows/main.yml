@@ -37,13 +37,13 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean
-#      - run: flutter build ios --release --no-codesign
-      - run: |
-          cd ios
-          rm podfile.lock 
-          pod deintegrate 
-          pod install
-          pod repo update 
+##      - run: flutter build ios --release --no-codesign
+#      - run: |
+#          cd ios
+#          rm podfile.lock
+#          pod deintegrate
+#          pod install
+#          pod repo update
       - run: |
           flutter build ios --no-codesign 
           cd build/ios/iphoneos 
