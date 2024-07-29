@@ -42,8 +42,8 @@ jobs:
           cd ios
           rm podfile.lock 
           pod deintegrate 
-          pod repo update 
           pod install
+          pod repo update 
       - run: |
           flutter build ios --no-codesign 
           cd build/ios/iphoneos 
