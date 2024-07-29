@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     ));
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Aponwola',
+      title: 'Aponwola Kitchen',
       theme: ThemeData(
         primarySwatch:Colors.red,
         fontFamily: 'Montserrat',
