@@ -75,12 +75,13 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
       - run: flutter clean
-      - run: flutter build apk --split-per-abi
+      - run: flutter build appbundle
         #work-above
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "build/app/outputs/apk/release/*"
+#          artifacts: "build/app/outputs/apk/release/*"
+          artifacts: "build/app/outputs/bundle/release/*"
           tag: v0.0.${{github. run_number}}
           token: ${{ secrets.TOKEN }}
 
@@ -88,9 +89,10 @@ jobs:
         uses: r0adkll/sign-android-release@v1
         id: sign_app
         with:
-#          releaseDirectory: build/app/outputs/bundle/release/
-          releaseDirectory: app/build/outputs/bundle/release
+          releaseDirectory: build/app/outputs/bundle/release/
+#          releaseDirectory: app/build/outputs/bundle/release
 #          releaseDirectory: android/
+#          releaseDirectory: home/runner/work/aponwola_kitchen_app/aponwola_kitchen_app/android/app/release
           signingKeyBase64: ${{ secrets.SIGNING_KEY_STORE_BASE64 }}
           alias: ${{ secrets.SIGNING_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.SIGNING_STORE_PASSWORD }}
