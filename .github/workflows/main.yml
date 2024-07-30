@@ -88,8 +88,8 @@ jobs:
         uses: r0adkll/sign-android-release@v1
         id: sign_app
         with:
-          releaseDirectory: build/app/outputs/bundle/release/
-#          releaseDirectory: app/build/outputs/bundle/release
+#          releaseDirectory: build/app/outputs/bundle/release/
+          releaseDirectory: app/build/outputs/bundle/release
 #          releaseDirectory: android/
           signingKeyBase64: ${{ secrets.SIGNING_KEY_STORE_BASE64 }}
           alias: ${{ secrets.SIGNING_KEY_ALIAS }}
