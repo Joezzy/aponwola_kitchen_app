@@ -59,13 +59,14 @@ jobs:
           alias: ${{ secrets.SIGNING_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.SIGNING_STORE_PASSWORD }}
           keyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}
-          ##DEPOYMENT
+          ##TO DOWNLOAD SIGNED APK ON GITHUB MANUALLY
       - name: Upload Signed App Bundle
         uses: actions/upload-artifact@v3
         with:
           name: signed-app-bundle
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
 
+          ##DEPLOY SIGNED APP TO PLAYSTORE
 #      - name: Upload to Play Store (Internal Testing)
 #        uses: r0adkll/upload-google-play@v1.0.18
 #        with:
